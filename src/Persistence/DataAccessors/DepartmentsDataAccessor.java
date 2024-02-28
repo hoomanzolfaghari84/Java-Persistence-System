@@ -7,12 +7,10 @@ import Persistence.FileManager;
 import Persistence.Mappers.DepartmentMapper;
 import Persistence.Mappers.EmployeeMapper;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.function.Predicate;
 
@@ -99,5 +97,14 @@ public class DepartmentsDataAccessor extends DataAccessor<Department,Integer> {
     @Override
     public <T> List<Department> where(Predicate<T> predicate) {
         return null;
+    }
+
+    @Override
+    public List<Integer> AllExistingKeys() {
+        List<Integer> keys = new LinkedList<>();
+        for (File entry : Objects.requireNonNull(entriesDirectory.listFiles(File::isFile))){
+            keys.add(Integer.parseInt(entry.getName().split("\\.")[0]));
+        }
+        return keys;
     }
 }

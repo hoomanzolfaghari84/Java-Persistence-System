@@ -23,5 +23,5 @@ public abstract class DataAccessor<TModel,TKey> {
     public abstract boolean exists(TKey key);
     public abstract <T> boolean any(Predicate<T> predicate);
     public abstract <T> List<TModel> where(Predicate<T> predicate);
-
+    public abstract List<TKey> AllExistingKeys();
 }
