@@ -4,6 +4,7 @@ import Exceptions.FileManagerException;
 import Models.Project.Project;
 import Persistence.FileManager;
 import Persistence.Mappers.ProjectMapper;
+import Settings.FileSettings;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -15,9 +16,12 @@ import java.util.function.Predicate;
 
 public class ProjectsDataAccessor extends DataAccessor<Project,Integer> {
 
+    public static File entriesDirectory = FileSettings.projectsDirectory;
+    public ProjectsDataAccessor( ) throws FileManagerException {
+        super();
 
-    public ProjectsDataAccessor(File dataFilesDirectory ) throws FileManagerException {
-        super(dataFilesDirectory, "Projects");
+        if(!entriesDirectory.exists() && !entriesDirectory.mkdirs()) throw new FileManagerException("creating model directory "+ entriesDirectory.getName() + " was unsuccessful");
+
     }
 
     @Override

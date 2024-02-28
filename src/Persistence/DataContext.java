@@ -15,9 +15,9 @@ public class DataContext {
     public DataContext() throws FileManagerException {
 
         if(!dataFilesDirectory.exists() && !dataFilesDirectory.mkdirs()) throw new FileManagerException("creating DataFiles directory was unsuccessful");
-        projectsDataAccessor = new ProjectsDataAccessor(dataFilesDirectory);
-        departmentsDataAccessor = new DepartmentsDataAccessor(dataFilesDirectory);
-        employeesDataAccessor = new EmployeesDataAccessor(dataFilesDirectory);
+        projectsDataAccessor = new ProjectsDataAccessor();
+        departmentsDataAccessor = new DepartmentsDataAccessor();
+        employeesDataAccessor = new EmployeesDataAccessor();
     }
 
     private final ProjectsDataAccessor projectsDataAccessor;

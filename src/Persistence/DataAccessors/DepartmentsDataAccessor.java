@@ -3,9 +3,9 @@ package Persistence.DataAccessors;
 import Exceptions.FileManagerException;
 import Models.Department.Department;
 import Models.User.Employee;
-import Persistence.FileManager;
 import Persistence.Mappers.DepartmentMapper;
 import Persistence.Mappers.EmployeeMapper;
+import Settings.FileSettings;
 
 import java.io.*;
 import java.util.LinkedList;
@@ -16,9 +16,11 @@ import java.util.function.Predicate;
 
 public class DepartmentsDataAccessor extends DataAccessor<Department,Integer> {
 
+    public static File entriesDirectory = FileSettings.departmentsDirectory;;
+    public DepartmentsDataAccessor() throws FileManagerException {
+        super();
 
-    public DepartmentsDataAccessor( File dataFilesDirectory) throws FileManagerException {
-        super( dataFilesDirectory, "Departments" /*Department.class.getName() or from settings */);
+        if(!entriesDirectory.exists() && !entriesDirectory.mkdirs()) throw new FileManagerException("creating model directory "+ entriesDirectory.getName() + " was unsuccessful");
     }
 
     @Override

@@ -4,6 +4,7 @@ import Exceptions.FileManagerException;
 import Models.User.Employee;
 import Persistence.FileManager;
 import Persistence.Mappers.EmployeeMapper;
+import Settings.FileSettings;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,8 +16,12 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class EmployeesDataAccessor extends DataAccessor<Employee,Integer> {
-    public EmployeesDataAccessor(File dataFilesDirectory) throws FileManagerException {
-        super( dataFilesDirectory, "Employees");
+    public static File entriesDirectory = FileSettings.employeesDirectory;;
+    public EmployeesDataAccessor() throws FileManagerException {
+        super();
+
+        if(!entriesDirectory.exists() && !entriesDirectory.mkdirs()) throw new FileManagerException("creating model directory "+ entriesDirectory.getName() + " was unsuccessful");
+
     }
 
     @Override

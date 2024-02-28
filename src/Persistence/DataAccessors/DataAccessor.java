@@ -9,11 +9,9 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public abstract class DataAccessor<TModel,TKey> {
-    protected static File entriesDirectory;
 
-    public DataAccessor(File dataFilesDirectory , String modelDirectoryName) throws FileManagerException {
-        entriesDirectory = new File(dataFilesDirectory + "/" + modelDirectoryName);
-        if(!entriesDirectory.exists() && !entriesDirectory.mkdirs()) throw new FileManagerException("creating model directory "+ modelDirectoryName + " was unsuccessful");
+    public DataAccessor() throws FileManagerException {
+
     }
 
     public abstract void add(TModel model) throws IOException, FileManagerException;

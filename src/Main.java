@@ -32,6 +32,7 @@ public class Main {
             employee.username = "e"+i;
             employee.salary = 10*i;
             employees.add(employee);
+            employee.projects = new LinkedList<>();
             if(i==6) continue;
             departments.getFirst().staff.add(employee);
             employee.department = departments.getFirst();
@@ -42,7 +43,7 @@ public class Main {
         employees.get(1).manager = employees.get(0);
         employees.get(2).manager = employees.get(0);
         employees.get(3).manager = employees.get(0);
-        employees.get(1).manager = employees.get(4);
+        employees.get(4).manager = employees.get(1);
 
         departments.getFirst().manager = employees.getFirst();
         departments.get(1).manager = employees.get(5);
@@ -52,8 +53,12 @@ public class Main {
         project.id = 1;
         project.name = "p1";
         project.Supervisor = employees.get(2);
+        project.Supervisor.projects.add(project);
+        project.staff = new LinkedList<>();
         project.staff.add(employees.get(3));
+        employees.get(3).projects.add(project);
         project.staff.add(employees.get(4));
+        employees.get(4).projects.add(project);
         projects.add(project);
 
         DataContext dataContext = new DataContext();

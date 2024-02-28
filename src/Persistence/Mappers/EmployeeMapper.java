@@ -22,7 +22,7 @@ public class EmployeeMapper {
         outputStream.append(String.valueOf(value.id)).append("\n");
         outputStream.append(value.username).append("\n");
         outputStream.append(String.valueOf(value.salary)).append("\n");
-        if(value.manager == null) outputStream.append("null");
+        if(value.manager == null) outputStream.append("null\n");
         else outputStream.append(String.valueOf(value.manager.id)).append("\n");
         outputStream.append(String.valueOf(value.department.id)).append("\n");
         for (Project project : value.projects){
