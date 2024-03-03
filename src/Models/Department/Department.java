@@ -9,4 +9,5 @@ public class Department {
     public String name;
     public Employee manager;
     public List<Employee> staff;
+
 }

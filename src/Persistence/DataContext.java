@@ -12,6 +12,7 @@ import java.io.File;
 public class DataContext {
     public static final File dataFilesDirectory = new File(FileSettings.baseDirectory + "/DataFiles");
 
+
     public DataContext() throws FileManagerException {
 
         if(!dataFilesDirectory.exists() && !dataFilesDirectory.mkdirs()) throw new FileManagerException("creating DataFiles directory was unsuccessful");

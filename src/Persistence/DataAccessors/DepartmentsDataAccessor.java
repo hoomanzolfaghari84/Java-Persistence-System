@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 
 public class DepartmentsDataAccessor extends DataAccessor<Department,Integer> {
 
-    public static File entriesDirectory = FileSettings.departmentsDirectory;;
+    public static File entriesDirectory = FileSettings.departmentsDirectory;
     public DepartmentsDataAccessor() throws FileManagerException {
         super();
 
@@ -45,9 +45,9 @@ public class DepartmentsDataAccessor extends DataAccessor<Department,Integer> {
     }
 
     @Override
-    public Department load(Integer integer) throws FileNotFoundException {
+    public Department load(Integer id) throws FileNotFoundException {
 
-        File entryFile = new File(entriesDirectory + "/" + integer.toString() +".department");
+        File entryFile = new File(entriesDirectory + "/" + id.toString() +".department");
         Scanner scanner = new Scanner(entryFile);
         Department department = new Department();
 
@@ -109,4 +109,6 @@ public class DepartmentsDataAccessor extends DataAccessor<Department,Integer> {
         }
         return keys;
     }
+
+
 }

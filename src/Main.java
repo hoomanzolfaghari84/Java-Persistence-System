@@ -4,9 +4,12 @@ import Models.Project.Project;
 import Models.User.Employee;
 import Persistence.DataContext;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 //TIP some information on file class and related stream classes in :<br>
 // https://www.geeksforgeeks.org/file-handling-in-java/
@@ -62,6 +65,7 @@ public class Main {
         projects.add(project);
 
         DataContext dataContext = new DataContext();
+
         for (Employee employee : employees){
 
             dataContext.getEmployeesDataAccessor().add(employee);
@@ -79,6 +83,9 @@ public class Main {
         Department department1 = dataContext.getDepartmentsDataAccessor().load(1);
         System.out.println(department1.name);
         System.out.println(department1.manager.username);
+
+
+
 
 
     }

@@ -2,7 +2,6 @@ package Persistence.DataAccessors;
 
 import Exceptions.FileManagerException;
 import Models.User.Employee;
-import Persistence.FileManager;
 import Persistence.Mappers.EmployeeMapper;
 import Settings.FileSettings;
 
